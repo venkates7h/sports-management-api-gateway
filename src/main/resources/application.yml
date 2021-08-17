@@ -1,0 +1,22 @@
+server:
+  port: 9191
+  
+spring:
+ application:
+  name: API-GATEWAY-SERVICE
+   
+ cloud:
+    gateway:
+      routes:
+       - id : SPORTS-NAMES-SERVICE
+         uri: lb://SPORTS-NAMES-SERVICE
+         predicates: 
+         - Path=/sports/**
+            
+           
+       - id : PLAYER-NAMES-SERVICE
+         uri: lb://PLAYER-NAMES-SERVICE
+         predicates: 
+         - Path=/player/**
+      
+       
